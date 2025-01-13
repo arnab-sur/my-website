@@ -66,30 +66,50 @@ navLink.forEach((n) => n.addEventListener("click", linkAction));
 // QUALIFICATION TABS
 let education = document.getElementById("education");
 let work = document.getElementById("work");
+let awards = document.getElementById("awards");
 let educationheader = document.getElementById("educationheader");
 let workheader = document.getElementById("workheader");
+let awardsheader = document.getElementById("awardsheader");
+awardsheader.style.color = "var(--text-color)";
 workheader.style.color = "var(--text-color)";
 educationheader.style.color = "var(--first-color)";
 
 educationheader.addEventListener("click", () => {
   let condition1 = work.classList.contains("qualification-inactive");
-  if (!condition1) {
+  let condition3 = awardsheader.classList.contains("qualification-inactive");
+  if (!condition1 || !condition3) {
     education.classList.remove("qualification-inactive");
     work.classList.add("qualification-inactive");
+    awards.classList.add("qualification-inactive");
     workheader.style.color = "var(--text-color)";
+    awardsheader.style.color = "var(--text-color)";
     educationheader.style.color = "var(--first-color)";
   }
 });
 workheader.addEventListener("click", () => {
   let condition2 = education.classList.contains("qualification-inactive");
-  if (!condition2) {
+  let condition3 = awardsheader.classList.contains("qualification-inactive");
+  if (!condition2 || !condition3) {
     work.classList.remove("qualification-inactive");
     education.classList.add("qualification-inactive");
+    awards.classList.add("qualification-inactive");
     educationheader.style.color = "var(--text-color)";
+    awardsheader.style.color = "var(--text-color)";
     workheader.style.color = "var(--first-color)";
   }
 });
-
+awardsheader.addEventListener("click", () => {
+  let condition1 = work.classList.contains("qualification-inactive");
+  let condition2 = education.classList.contains("qualification-inactive");
+  if (!condition1 || !condition2) {
+    awards.classList.remove("qualification-inactive");
+    education.classList.add("qualification-inactive");
+    work.classList.add("qualification-inactive");
+    educationheader.style.color = "var(--text-color)";
+    workheader.style.color = "var(--text-color)";
+    awardsheader.style.color = "var(--first-color)";
+  }
+});
 // SKILLS
 const skillContent = document.querySelectorAll(".skill");
 const skillHeader = document.querySelectorAll(".skills_header");
@@ -197,7 +217,7 @@ themeButton.addEventListener("click", () => {
 
 
 $('about_img').mousedown(function (e) {
-  if(e.button == 2) { // right click
+  if (e.button == 2) { // right click
     return false; // do nothing!
   }
 });
